@@ -14,12 +14,13 @@ fi
 sudo apt update
 sudo apt install -y meson python3-pyelftools cmake pkg-config
 
-pushd /home/$GENIUSER 
+pushd /users/$GENIUSER
+echo "I am $GENIUSER"
 sudo su -c $GENIUSER -c "wget https://content.mellanox.com/ofed/MLNX_OFED-24.04-0.6.6.0/MLNX_OFED_LINUX-24.04-0.6.6.0-ubuntu22.04-x86_64.tgz --no-check-certificate"
-tar -xvzf MLNX_OFED_LINUX-24.04-0.6.6.0-ubuntu22.04-x86_64.tgz
+sudo su -c $GENIUSER -c "tar -xvzf MLNX_OFED_LINUX-24.04-0.6.6.0-ubuntu22.04-x86_64.tgz"
 pushd MLNX_OFED_LINUX-24.04-0.6.6.0-ubuntu22.04-x86_64
-sudo ./mlnxofedinstall --force --upstream-libs --dpdk
-sudo /etc/init.d/openibd restart
+sudo su -c $GENIUSER -c "./mlnxofedinstall --force --upstream-libs --dpdk"
+sudo su -c $GENIUSER -c "/etc/init.d/openibd restart"
 popd
 popd
 
