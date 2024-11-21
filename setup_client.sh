@@ -22,6 +22,8 @@ sudo /etc/init.d/openibd restart
 popd
 popd
 
+sleep 5
+
 # TODO: clone ppopp-artifact repo to make it consistent and unaffected by future changes
 
 pushd /users/$GENIUSER

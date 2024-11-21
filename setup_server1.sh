@@ -22,6 +22,8 @@ sudo /etc/init.d/openibd restart
 popd
 popd
 
+sleep 5
+
 pushd /users/$GENIUSER
 
 # setup doradd-server
