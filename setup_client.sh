@@ -12,14 +12,14 @@ fi
 
 
 pushd /users/$GENIUSER
-sudo su - $GENIUSER -c "git clone https://github.com/doradd-rt/rpc-dpdk-client.git"
-sudo su - $GENIUSER -c "cd rpc-dpdk-client"
-sudo su - $GENIUSER -c "git submodule update --init"
-sudo su - $GENIUSER -c "make dpdk"
-sudo su - $GENIUSER -c "cd scripts && sudo ./hugepages.sh"
-sudo su - $GENIUSER -c "cd ../src && mkdir build && cd build"
-sudo su - $GENIUSER -c "cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DYCSB=True -DEXPONENTIAL=True"
-sudo su - $GENIUSER -c "cd ../../"
+sudo git clone https://github.com/doradd-rt/rpc-dpdk-client.git
+sudo cd rpc-dpdk-client
+sudo git submodule update --init
+sudo make dpdk
+sudo cd scripts && sudo ./hugepages.sh
+sudo cd ../src && mkdir build && cd build
+sudo cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DYCSB=True -DEXPONENTIAL=True
+sudo cd ../../
 
 # Prepare log
 # TODO: add more
