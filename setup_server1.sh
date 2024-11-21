@@ -26,12 +26,22 @@ pushd /users/$GENIUSER
 
 # setup doradd-server
 sudo git clone https://github.com/doradd-rt/doradd-server.git
+
 pushd doradd-server
+
 sudo git submodule update --init
 sudo make dpdk
-sudo cd scripts && sudo ./hugepages.sh
-sudo cd ../src && mkdir build && cd build
+pushd scripts
+sudo ./hugepages.sh
+popd
+
+pushd src 
+sudo mkdir build
+pushd build
 sudo cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
+popd
+popd
+
 popd
 
 # setup caladan repo
@@ -39,6 +49,6 @@ sudo git clone https://github.com/doradd-rt/caladan
 pushd caladan
 sudo apt install -y make gcc cmake pkg-config libnl-3-dev libnl-route-3-dev libnuma-dev uuid-dev libssl-dev libaio-dev libcunit1-dev libclang-dev libncurses-dev meson python3-pyelftools
 sudo curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain=nightly-2024-01-30
-sudo . "$HOME/.cargo/env"
+sudo su - $GENIUSER -c ". "$HOME/.cargo/env""
 sudo make submodules
 popd
