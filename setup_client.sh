@@ -12,19 +12,19 @@ fi
 
 
 pushd /users/$GENIUSER
-sudo su -c $GENIUSER -c "git clone https://github.com/doradd-rt/rpc-dpdk-client.git"
-sudo su -c $GENIUSER -c "cd rpc-dpdk-client"
-sudo su -c $GENIUSER -c "git submodule update --init"
-sudo su -c $GENIUSER -c "make dpdk"
-sudo su -c $GENIUSER -c "cd scripts && sudo ./hugepages.sh"
-sudo su -c $GENIUSER -c "cd ../src && mkdir build && cd build"
-sudo su -c $GENIUSER -c "cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DYCSB=True -DEXPONENTIAL=True"
-sudo su -c $GENIUSER -c "cd ../../"
+sudo su - $GENIUSER -c "git clone https://github.com/doradd-rt/rpc-dpdk-client.git"
+sudo su - $GENIUSER -c "cd rpc-dpdk-client"
+sudo su - $GENIUSER -c "git submodule update --init"
+sudo su - $GENIUSER -c "make dpdk"
+sudo su - $GENIUSER -c "cd scripts && sudo ./hugepages.sh"
+sudo su - $GENIUSER -c "cd ../src && mkdir build && cd build"
+sudo su - $GENIUSER -c "cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DYCSB=True -DEXPONENTIAL=True"
+sudo su - $GENIUSER -c "cd ../../"
 
 # Prepare log
 # TODO: add more
 pushd scripts/gen-replay-log
-sudo su -c $GENIUSER -c "g++ -O3 generate_ycsb_zipf.cc"
-sudo su -c $GENIUSER -c "./a.out -d uniform -c no_cont"
+sudo su - $GENIUSER -c "g++ -O3 generate_ycsb_zipf.cc"
+sudo su - $GENIUSER -c "./a.out -d uniform -c no_cont"
 popd
 popd
