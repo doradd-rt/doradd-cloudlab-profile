@@ -78,12 +78,11 @@ for i in range(params.numnodes - 1):
 
 for node in nodes:
     ## install dev dependency and set up dpdk 
-    node.addService(pg.Execute(shell="sh", command="/local/repository/setup.sh"))
+    node.addService(pg.Execute(shell="bash", command="/local/repository/setup.sh > /tmp/setup.log 2>&1"))
 
-nodes[0].addService(pg.Execute(shell="sh", command="/local/repository/setup_client.sh"))
-nodes[1].addService(pg.Execute(shell="sh", command="/local/repository/setup_server1.sh"))
-nodes[2].addService(pg.Execute(shell="sh", command="/local/repository/setup_server2.sh"))
-
+nodes[0].addService(pg.Execute(shell="bash", command="/local/repository/setup_client.sh > /tmp/setup1.log 2>&1"))
+nodes[1].addService(pg.Execute(shell="bash", command="/local/repository/setup_server1.sh > /tmp/setup1.log 2>&1"))
+nodes[2].addService(pg.Execute(shell="bash", command="/local/repository/setup_server2.sh > /tmp/setup1.log 2>&1"))
 
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)
