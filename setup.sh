@@ -1,7 +1,6 @@
 #!/bin/bash
 set -x
-SCRIPTNAME=$0
-#
+
 # Might not be on the local cluster, so need to use the urn to
 # see who the actual creator is.
 #
@@ -15,7 +14,6 @@ sudo apt update
 sudo apt install -y meson python3-pyelftools cmake pkg-config
 
 pushd /users/$GENIUSER
-echo "I am $GENIUSER"
 sudo su -c $GENIUSER -c "wget https://content.mellanox.com/ofed/MLNX_OFED-24.04-0.6.6.0/MLNX_OFED_LINUX-24.04-0.6.6.0-ubuntu22.04-x86_64.tgz --no-check-certificate"
 sudo su -c $GENIUSER -c "tar -xvzf MLNX_OFED_LINUX-24.04-0.6.6.0-ubuntu22.04-x86_64.tgz"
 pushd MLNX_OFED_LINUX-24.04-0.6.6.0-ubuntu22.04-x86_64
