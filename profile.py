@@ -42,8 +42,9 @@ pc.defineParameter("sameSwitch",  "No Interswitch Links", portal.ParameterType.B
 params = pc.bindParameters()
 pc.verifyParameters()
 
-## Setup cornflakes nodes
-ip_addrs = ['192.168.1.1', '192.168.1.2', '192.168.1.3']
+## Setup nodes
+ip_addrs = ['192.168.1.{}'.format(i + 1) for i in range(params.numnodes)]
+
 # link
 link_0 = request.LAN('link-0')
 if params.sameSwitch:
@@ -65,7 +66,7 @@ link_0.addInterface(iface0)
 nodes = [node_0]
 
 # servers
-for i in range(params.numnodes):
+for i in range(params.numnodes - 1):
     machine_name = "doradd-server{}".format(str(i+1))
     iface_name = "interface-{}".format(str(i+1))
     node = request.RawPC(machine_name)
