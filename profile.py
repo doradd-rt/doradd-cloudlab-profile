@@ -76,10 +76,6 @@ for i in range(params.numnodes - 1):
     link_0.addInterface(iface)
     nodes.append(node)
 
-for node in nodes:
-    ## install dev dependency and set up dpdk 
-    node.addService(pg.Execute(shell="bash", command="/local/repository/setup.sh > /tmp/setup.log 2>&1"))
-
 nodes[0].addService(pg.Execute(shell="bash", command="/local/repository/setup_client.sh > /tmp/setup1.log 2>&1"))
 nodes[1].addService(pg.Execute(shell="bash", command="/local/repository/setup_server1.sh > /tmp/setup1.log 2>&1"))
 #nodes[2].addService(pg.Execute(shell="bash", command="/local/repository/setup_server2.sh > /tmp/setup1.log 2>&1"))
