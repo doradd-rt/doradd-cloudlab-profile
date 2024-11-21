@@ -30,10 +30,10 @@ pc.defineParameter("phystype",
                     "c6525-25g", 
                     legalValues=["c6525-100g", "d6515", "c6525-25g"]
                     )
-pc.defineParameter("numclients",
-                    "Number of clients to spawn (max 5)",
+pc.defineParameter("numnodes",
+                    "Number of nodes to spawn",
                     portal.ParameterType.INTEGER,
-                    1, 
+                    3 
                     )
 
 pc.defineParameter("sameSwitch",  "No Interswitch Links", portal.ParameterType.BOOLEAN, True)
@@ -65,7 +65,7 @@ link_0.addInterface(iface0)
 nodes = [node_0]
 
 # servers
-for i in range(params.numclients):
+for i in range(params.numnodes):
     machine_name = "doradd-server{}".format(str(i+1))
     iface_name = "interface-{}".format(str(i+1))
     node = request.RawPC(machine_name)
