@@ -52,3 +52,5 @@ sudo ./a.out -d uniform -c no_cont
 popd
 
 popd
+
+sudo chown -R $GENIUSER /users/$GENIUSER

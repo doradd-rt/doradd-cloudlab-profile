@@ -45,3 +45,5 @@ popd
 popd
 
 popd
+
+sudo chown -R $GENIUSER /users/$GENIUSER

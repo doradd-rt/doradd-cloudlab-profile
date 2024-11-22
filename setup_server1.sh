@@ -54,3 +54,5 @@ sudo su - $GENIUSER -c "curl https://sh.rustup.rs -sSf | sh -s -- -y --default-t
 sudo su - $GENIUSER -c ". /users/$GENIUSER/.cargo/env"
 sudo make submodules
 popd
+
+sudo chown -R $GENIUSER /users/$GENIUSER
