@@ -50,7 +50,7 @@ popd
 sudo git clone https://github.com/doradd-rt/caladan
 pushd caladan
 sudo apt install -y make gcc cmake pkg-config libnl-3-dev libnl-route-3-dev libnuma-dev uuid-dev libssl-dev libaio-dev libcunit1-dev libclang-dev libncurses-dev meson python3-pyelftools
-sudo curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain=nightly-2024-01-30
-sudo su - $GENIUSER -c ". "$HOME/.cargo/env""
+sudo su - $GENIUSER -c "curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain=nightly-2024-01-30"
+sudo su - $GENIUSER -c ". /users/$GENIUSER/.cargo/env"
 sudo make submodules
 popd
