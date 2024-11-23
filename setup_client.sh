@@ -49,6 +49,11 @@ popd
 pushd scripts/gen-replay-log
 sudo g++ -O3 generate_ycsb_zipf.cc
 sudo ./a.out -d uniform -c no_cont
+sudo ./a.out -d zipfian -s 0.50 -c no_cont
+sudo ./a.out -d zipfian -s 0.80 -c no_cont
+sudo ./a.out -d zipfian -s 0.90 -c no_cont
+sudo ./a.out -d zipfian -s 0.95 -c no_cont
+sudo ./a.out -d zipfian -s 0.99 -c no_cont
 popd
 
 popd
