@@ -11,7 +11,7 @@ exit 1
 fi
 
 sudo apt update
-sudo apt install -y meson python3-pyelftools cmake pkg-config
+sudo apt install -y meson python3-pyelftools cmake pkg-config htop
 
 pushd /users/$GENIUSER
 sudo wget https://content.mellanox.com/ofed/MLNX_OFED-24.04-0.6.6.0/MLNX_OFED_LINUX-24.04-0.6.6.0-ubuntu22.04-x86_64.tgz --no-check-certificate
