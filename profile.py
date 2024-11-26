@@ -28,12 +28,12 @@ pc.defineParameter("phystype",
                     "Physical Node Type",
                     portal.ParameterType.STRING,
                     "d6515", 
-                    legalValues=["c6525-100g", "d6515", "c6525-25g"]
+                    legalValues=["c6525-100g", "d6515"]
                     )
 pc.defineParameter("numnodes",
                     "Number of nodes to spawn",
                     portal.ParameterType.INTEGER,
-                    2 
+                    3 
                     )
 
 pc.defineParameter("sameSwitch",  "No Interswitch Links", portal.ParameterType.BOOLEAN, True)
@@ -78,7 +78,7 @@ for i in range(params.numnodes - 1):
 
 nodes[0].addService(pg.Execute(shell="bash", command="/local/repository/setup_client.sh > /tmp/setup1.log 2>&1"))
 nodes[1].addService(pg.Execute(shell="bash", command="/local/repository/setup_server1.sh > /tmp/setup1.log 2>&1"))
-#nodes[2].addService(pg.Execute(shell="bash", command="/local/repository/setup_server2.sh > /tmp/setup1.log 2>&1"))
+nodes[2].addService(pg.Execute(shell="bash", command="/local/repository/setup_server2.sh > /tmp/setup1.log 2>&1"))
 
 # Print the RSpec to the enclosing page.
 pc.printRequestRSpec(request)

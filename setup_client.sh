@@ -24,9 +24,13 @@ popd
 
 sleep 5
 
-# TODO: clone ppopp-artifact repo to make it consistent and unaffected by future changes
-
 pushd /users/$GENIUSER
+
+sudo git clone https://github.com/doradd-rt/ppopp-artifact.git
+pushd ppopp-artifact
+sudo git submodule update --init --recursive
+popd
+
 sudo git clone https://github.com/doradd-rt/rpc-dpdk-client.git
 
 pushd rpc-dpdk-client

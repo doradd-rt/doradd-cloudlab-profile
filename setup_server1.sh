@@ -26,6 +26,11 @@ sleep 5
 
 pushd /users/$GENIUSER
 
+sudo git clone https://github.com/doradd-rt/ppopp-artifact.git
+pushd ppopp-artifact
+sudo git submodule update --init --recursive
+popd
+
 # setup doradd-server
 sudo git clone https://github.com/doradd-rt/doradd-server.git
 
